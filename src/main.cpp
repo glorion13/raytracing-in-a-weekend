@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "vec3.h"
+
 int main()
 {
 
@@ -18,10 +20,12 @@ int main()
         std::cerr << "Progress (scanlines remaining): " << j << '\n';
         for (int i = 0; i < image_width; ++i)
         {
+            // Calculate value based on image position
             float r = float(i) / (image_width - 1);
             float g = float(j) / (image_height - 1);
             float b = 0.25;
 
+            // Convert value to a colour between 0-256
             int ir = static_cast<int>(255.999 * r);
             int ig = static_cast<int>(255.999 * g);
             int ib = static_cast<int>(255.999 * b);
@@ -29,4 +33,7 @@ int main()
             std::cout << ir << ' ' << ig << ' ' << ib << '\n';
         }
     }
+
+    std::cerr
+        << "Render complete." << '\n';
 }
